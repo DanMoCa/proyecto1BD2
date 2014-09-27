@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author Kevin Arnold
  */
-public class Conexion {
+public class ConnOracle {
       
     public static Connection GetConnection()
     {
