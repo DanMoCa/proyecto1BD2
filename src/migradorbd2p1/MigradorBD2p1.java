@@ -21,8 +21,8 @@ public class MigradorBD2p1 {
     public static void main(String[] args) {
         try {
             // TODO code application logic here
-            Connection conn = Conexion.GetConnection();
-            String sql = "SELECT * FROM employees";
+            Connection conn = ConnSQLServer.GetConnection();
+            String sql = "SELECT * FROM tbusuarios";
             PreparedStatement ps;
             ResultSet rs;
             
