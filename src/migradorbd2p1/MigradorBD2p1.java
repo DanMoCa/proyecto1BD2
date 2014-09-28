@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.sql.CallableStatement;
+import java.util.Vector;
 import oracle.jdbc.OracleTypes;
 
 public class MigradorBD2p1 {
@@ -53,11 +54,12 @@ public class MigradorBD2p1 {
                 while(rs2.next())
                 {
                     System.out.println(rs2.getString(1));
-                    String call="{? = call estruct_column(?,?)}";
+                    String call="{? = call estruct_columnu(?,?,?)}";
                     ini=conn.prepareCall(call);
                     ini.registerOutParameter(1, OracleTypes.VARCHAR);
                     ini.setString(2, rs.getString(1));
                     ini.setString(3, rs2.getString(1));
+                    ini.setString(4, ConnOracle.getUsuarioDB());
                     ini.execute();
                     System.out.print(" estruct "+ini.getString(1));
                     System.out.println();
@@ -96,11 +98,13 @@ public class MigradorBD2p1 {
                 case "NUMBER":
                     try {
                         CallableStatement chk;
-                        String call="{? = call GET_DSCALE(?,?)}";
+                        String call="{? = call GET_DSCALEU(?,?,?)}";
                         chk =ConnOracle.GetConnection().prepareCall(call);
                         chk.registerOutParameter(1, OracleTypes.NUMBER);
                         chk.setString(2, tabla);
                         chk.setString(3, datos[0]);
+                        chk.setString(4, ConnOracle.getUsuarioDB());
+
                         chk.execute();
                         System.out.println("\n**"+chk.getInt(1)+"**\n");
                         tipo=tratarNumber(chk.getInt(1));
@@ -175,6 +179,14 @@ public class MigradorBD2p1 {
         {
             return "INTEGER";
         }
+    }
+    
+    private void selectsInserts()
+    {
+        //obtener tipos de datos
+        Vector tipos;
+        tipos = new Vector(10);
+        
     }
     
 }

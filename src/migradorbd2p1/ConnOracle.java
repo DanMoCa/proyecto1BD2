@@ -19,7 +19,7 @@ public class ConnOracle {
     private static String usuarioDB="dan";
     private static String passwordDB="1234";
     private static String serv="XE";
-    public String getUsuarioDB() {
+    public static String getUsuarioDB() {
         return usuarioDB;
     }
 
