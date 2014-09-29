@@ -302,7 +302,8 @@ public class MigradorBD2p1 {
     }
     
 //<<<<<<< HEAD
-    public static void insertarTabla(String tableName, String values) throws SQLException 
+//<<<<<<< HEAD
+  /*  public static void insertarTabla(String tableName, String values) throws SQLException 
     { 
         try
         {
@@ -321,7 +322,7 @@ public class MigradorBD2p1 {
            JOptionPane.showMessageDialog(null, a.getMessage()); 
         }
             
-    }
+    }*/
     public static void crearTabla2(String tableName, String values) throws SQLException 
     { 
         try
@@ -361,6 +362,26 @@ public class MigradorBD2p1 {
         
         
     }/*/
+//=======
+    public static void insertarTabla(String tableName, String values) throws SQLException
+    {
+        Connection con = ConnSQLServer.GetConnection();
+        CallableStatement cst = null;
+        String call="{call insertIntoTable(?,?)}";
+        
+        
+            cst = con.prepareCall(call);
+            cst.setString(1, tableName);
+            cst.setString(2, values);
+            
+            cst.execute();
+            con.commit();
+            System.out.println("Holi");
+        
+        
+        
+    }
+//>>>>>>> origin/master
     
 }
     

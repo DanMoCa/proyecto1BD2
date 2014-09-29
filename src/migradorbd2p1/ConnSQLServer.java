@@ -24,9 +24,12 @@ public class ConnSQLServer {
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String servidor = "jdbc:sqlserver://localhost:1433;";
+//<<<<<<< HEAD
 
             
 /*
+=======
+>>>>>>> origin/master
             String dbName = "databaseName=HR;";
             String usuarioDB="user=dan;";
             String passwordDB="password=1234;";
