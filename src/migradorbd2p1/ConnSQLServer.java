@@ -24,9 +24,7 @@ public class ConnSQLServer {
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String servidor = "jdbc:sqlserver://localhost:1433;";
-            String dbName = "databaseName=danmoca;";
-            String usuarioDB="user=dan;";
-            String passwordDB="password=1234;";
+            
             
             conexion= DriverManager.getConnection(servidor+dbName+usuarioDB+passwordDB);
         }
@@ -50,4 +48,35 @@ public class ConnSQLServer {
             return conexion;
         }
     }
+    
+    private static String usuarioDB="user=dan;";
+    /*dbName = "databaseName=danmoca;";
+            usuarioDB="user=dan;";
+            passwordDB="password=1234;";*/
+    private static String passwordDB="password=1234;";
+    private static String dbName="databaseName=danmoca;";
+    public static String getUsuarioDB() {
+        return usuarioDB;
+    }
+
+    public static void setUsuarioDB(String usuarioDB) {
+        ConnSQLServer.usuarioDB = "user="+usuarioDB+";";
+    }
+
+    public static String getPasswordDB() {
+        return passwordDB;
+    }
+
+    public static void setPasswordDB(String passwordDB) {
+        ConnSQLServer.passwordDB = "password="+passwordDB+";";
+    }
+
+    public static String getDbName() {
+        return dbName;
+    }
+
+    public static void setDbName(String db) {
+        ConnSQLServer.dbName = "databaseName="+db+";";
+    }
+    
 }
