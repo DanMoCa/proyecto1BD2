@@ -78,6 +78,13 @@ public class MigradorBD2p1 {
             }
              MigradorBD2p1.selectsInserts();
             //conn.close();
+            
+            //Prueba insert a SQL Server
+            String tname, value;
+            tname = " employees ";
+            value = " 5,'Alex','Montes','Muffin@gmail.com' , 123489823 ,GETDATE(), 'AD_PRES', 24000 , NULL , NULL , 90 ";
+            insertarTabla(tname, value);
+            
         } catch (SQLException ex) {
             Logger.getLogger(MigradorBD2p1.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -91,6 +98,7 @@ public class MigradorBD2p1 {
         String estruct="";
         String[] columnas=desc.split("/");
         String[] datos;
+      
         for(int i = 0;i<columnas.length;i++)
         {
             datos=columnas[i].split(" ");
@@ -293,6 +301,7 @@ public class MigradorBD2p1 {
         
     }
     
+//<<<<<<< HEAD
     public static void insertarTabla(String tableName, String values) throws SQLException 
     { 
         try
@@ -331,6 +340,30 @@ public class MigradorBD2p1 {
            JOptionPane.showMessageDialog(null, a.getMessage()+"\n");
         } 
     }
-    }
+    
+    
+    /*
+    public static void insertarTabla(String tableName, String values) throws SQLException
+    {
+        Connection con = ConnSQLServer.GetConnection();
+        CallableStatement cst = null;
+        String call="{call insertIntoTable(?,?)}";
+        
+        
+            cst = con.prepareCall(call);
+            cst.setString(1, tableName);
+            cst.setString(2, values);
+            
+            cst.execute();
+            con.commit();
+            System.out.println("Holi");
+        
+        
+        
+    }/*/
+    
+}
+    
+
 
 

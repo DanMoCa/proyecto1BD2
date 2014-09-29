@@ -24,8 +24,14 @@ public class ConnSQLServer {
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String servidor = "jdbc:sqlserver://localhost:1433;";
+
             
-            
+/*
+            String dbName = "databaseName=HR;";
+            String usuarioDB="user=dan;";
+            String passwordDB="password=1234;";
+*/
+
             conexion= DriverManager.getConnection(servidor+dbName+usuarioDB+passwordDB);
         }
         catch(ClassNotFoundException ex)
@@ -49,7 +55,7 @@ public class ConnSQLServer {
         }
     }
     
-    private static String usuarioDB="user=dan;";
+    private static String usuarioDB="user=HR;";
     /*dbName = "databaseName=danmoca;";
             usuarioDB="user=dan;";
             passwordDB="password=1234;";*/
